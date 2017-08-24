@@ -1,0 +1,46 @@
+<?php
+namespace GDO\Captcha\Method;
+
+use GDO\Captcha\Module_Captcha;
+use GDO\Captcha\PhpCaptcha;
+use GDO\Core\Method;
+use GDO\Template\Response;
+use GDO\User\Session;
+use GDO\Util\HTTP;
+/**
+ * Create and display a captcha.
+ * 
+ * @author gizmore
+ * @author spaceone
+ * 
+ * @since 2.0
+ * @version 5.0
+ */
+class Image extends Method
+{
+    public function isAjax() { return true; }
+    
+	public function execute() 
+	{
+		# Load the Captcha class
+		$module = Module_Captcha::instance();
+		
+		# disable HTTP Caching
+		HTTP::noCache();
+		
+		# Setup Font, Color, Size
+		$aFonts = $module->cfgCaptchaFonts();
+		$rgbcolor = ltrim($module->cfgCaptchaBG(), '#');
+		$width = $module->cfgCaptchaWidth();
+		$height = $module->cfgCaptchaHeight();
+		$oVisualCaptcha = new PhpCaptcha($aFonts, $width, $height, $rgbcolor);
+		
+		if (isset($_REQUEST['new']))
+		{
+			Session::remove('php_lock_captcha');
+		}
+		
+		$oVisualCaptcha->Create('', Session::get('php_lock_captcha', true));
+		die();
+	}
+}
