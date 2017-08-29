@@ -1,12 +1,12 @@
 <?php
 namespace GDO\Captcha;
 
-use GDO\Core\Module;
+use GDO\Core\GDO_Module;
 use GDO\Type\GDT_Int;
 use GDO\UI\GDT_Color;
 use GDO\UI\GDT_Font;
 
-final class Module_Captcha extends Module
+final class Module_Captcha extends GDO_Module
 {
 	public function onLoadLanguage() { return $this->loadLanguage('lang/captcha'); }
 	public function getConfig()

@@ -5,7 +5,7 @@ use GDO\Captcha\Module_Captcha;
 use GDO\Captcha\PhpCaptcha;
 use GDO\Core\Method;
 use GDO\Template\Response;
-use GDO\User\Session;
+use GDO\User\GDO_Session;
 use GDO\Util\HTTP;
 /**
  * Create and display a captcha.
@@ -37,10 +37,10 @@ class Image extends Method
 		
 		if (isset($_REQUEST['new']))
 		{
-			Session::remove('php_lock_captcha');
+			GDO_Session::remove('php_lock_captcha');
 		}
 		
-		$oVisualCaptcha->Create('', Session::get('php_lock_captcha', true));
+		$oVisualCaptcha->Create('', GDO_Session::get('php_lock_captcha', true));
 		die();
 	}
 }

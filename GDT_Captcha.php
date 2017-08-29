@@ -3,7 +3,7 @@ namespace GDO\Captcha;
 
 use GDO\Form\GDT_Form;
 use GDO\Type\GDT_Base;
-use GDO\User\Session;
+use GDO\User\GDO_Session;
 use GDO\Template\GDT_Template;
 use GDO\Form\WithIcon;
 
@@ -17,7 +17,7 @@ class GDT_Captcha extends GDT_Base
 	public function __construct()
 	{
 		$this->name = 'captcha';
-		$this->initial = Session::get('php_lock_captcha', '');
+		$this->initial = GDO_Session::get('php_lock_captcha', '');
 	}
 	
 	public function hrefCaptcha()
@@ -37,9 +37,9 @@ class GDT_Captcha extends GDT_Base
 	
 	public function validate($value)
 	{
-		if (strtoupper($value) === Session::get('php_captcha', null))
+		if (strtoupper($value) === GDO_Session::get('php_captcha', null))
 		{
-			Session::set('php_lock_captcha', $value);
+			GDO_Session::set('php_lock_captcha', $value);
 			return true;
 		}
 		$this->invalidate();
@@ -48,7 +48,7 @@ class GDT_Captcha extends GDT_Base
 	
 	public function invalidate()
 	{
-		Session::remove('php_lock_captcha');
+		GDO_Session::remove('php_lock_captcha');
 	}
 	
 	public function onValidated()

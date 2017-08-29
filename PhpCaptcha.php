@@ -48,7 +48,7 @@ namespace GDO\Captcha;
    
    // class defaults - change to effect globally
    
-use GDO\User\Session;
+use GDO\User\GDO_Session;
 use GDO\Util\Random;
 
    define('CAPTCHA_SESSION_ID', 'php_captcha');
@@ -274,9 +274,9 @@ use GDO\Util\Random;
          
          // save code in session variable
          if ($this->bCaseInsensitive) {
-         	Session::set(CAPTCHA_SESSION_ID, strtoupper($this->sCode));
+         	GDO_Session::set(CAPTCHA_SESSION_ID, strtoupper($this->sCode));
          } else {
-         	Session::set(CAPTCHA_SESSION_ID, $this->sCode);
+         	GDO_Session::set(CAPTCHA_SESSION_ID, $this->sCode);
          }
       }
       
@@ -416,9 +416,9 @@ use GDO\Util\Random;
             $sUserCode = strtoupper($sUserCode);
          }
          
-         if ($sUserCode === Session::get(CAPTCHA_SESSION_ID)) {
+         if ($sUserCode === GDO_Session::get(CAPTCHA_SESSION_ID)) {
             // clear to prevent re-use
-            Session::remove(CAPTCHA_SESSION_ID);
+            GDO_Session::remove(CAPTCHA_SESSION_ID);
             return true;
          }
          
@@ -441,8 +441,8 @@ use GDO\Util\Random;
          $this->SetAudioPath($sAudioPath);
          
          // retrieve code if already set by previous instance of visual PhpCaptcha
-         if (Session::exists(CAPTCHA_SESSION_ID)) { 
-            $this->sCode = Session::get(CAPTCHA_SESSION_ID);
+         if (GDO_Session::exists(CAPTCHA_SESSION_ID)) { 
+            $this->sCode = GDO_Session::get(CAPTCHA_SESSION_ID);
          }
       }
       
