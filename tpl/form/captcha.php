@@ -1,6 +1,6 @@
 <?php
-use GDO\Captcha\GDO_Captcha;
-$field instanceof GDO_Captcha;
+use GDO\Captcha\GDT_Captcha;
+$field instanceof GDT_Captcha;
 ?>
 <md-input-container class="md-block md-float md-icon-left" flex>
   <label for="form[<?= $field->name; ?>]"><?= t('captcha'); ?></label>

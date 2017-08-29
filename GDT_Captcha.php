@@ -1,18 +1,18 @@
 <?php
 namespace GDO\Captcha;
 
-use GDO\Form\GDO_Form;
-use GDO\Type\GDO_Base;
+use GDO\Form\GDT_Form;
+use GDO\Type\GDT_Base;
 use GDO\User\Session;
-use GDO\Template\GDO_Template;
+use GDO\Template\GDT_Template;
 use GDO\Form\WithIcon;
 
-class GDO_Captcha extends GDO_Base
+class GDT_Captcha extends GDT_Base
 {
     use WithIcon;
     
 	public function blankData() {}
-	public function addFormValue(GDO_Form $form, $value) {}
+	public function addFormValue(GDT_Form $form, $value) {}
 	
 	public function __construct()
 	{
@@ -32,7 +32,7 @@ class GDO_Captcha extends GDO_Base
 
 	public function renderForm()
 	{
-		return GDO_Template::php('Captcha', 'form/captcha.php', ['field' => $this]);
+		return GDT_Template::php('Captcha', 'form/captcha.php', ['field' => $this]);
 	}
 	
 	public function validate($value)

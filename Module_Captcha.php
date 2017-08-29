@@ -2,9 +2,9 @@
 namespace GDO\Captcha;
 
 use GDO\Core\Module;
-use GDO\Type\GDO_Int;
-use GDO\UI\GDO_Color;
-use GDO\UI\GDO_Font;
+use GDO\Type\GDT_Int;
+use GDO\UI\GDT_Color;
+use GDO\UI\GDT_Font;
 
 final class Module_Captcha extends Module
 {
@@ -12,10 +12,10 @@ final class Module_Captcha extends Module
 	public function getConfig()
 	{
 		return array(
-		    GDO_Font::make('captcha_font')->multiple()->minSelected(1)->initialValue(["theme/default/fonts/arial.ttf"])->notNull(),
-			GDO_Color::make('captcha_bg')->initial('#f8f8f8')->notNull(),
-			GDO_Int::make('captcha_width')->initial('256')->min(48)->max(512)->notNull(),
-			GDO_Int::make('captcha_height')->initial('48')->min(24)->max(256)->notNull(),
+		    GDT_Font::make('captcha_font')->multiple()->minSelected(1)->initialValue(["theme/default/fonts/arial.ttf"])->notNull(),
+			GDT_Color::make('captcha_bg')->initial('#f8f8f8')->notNull(),
+			GDT_Int::make('captcha_width')->initial('256')->min(48)->max(512)->notNull(),
+			GDT_Int::make('captcha_height')->initial('48')->min(24)->max(256)->notNull(),
 		);
 	}
 	public function cfgCaptchaFonts() { return $this->getConfigValue('captcha_font'); }
