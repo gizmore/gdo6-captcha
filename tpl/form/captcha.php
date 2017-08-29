@@ -10,6 +10,7 @@ $field instanceof GDT_Captcha;
    onclick="this.src='<?= $field->hrefNewCaptcha(); ?>'+(new Date().getTime())" />
   <?= $field->htmlIcon(); ?>
   <input
+   autocomplete="off"
    type="text"
    pattern="[a-zA-Z]{5}"
    required="required"
