@@ -10,6 +10,7 @@ use GDO\Form\WithIcon;
 class GDT_Captcha extends GDT_Base
 {
     use WithIcon;
+    public $notNull = true;
     
 	public function blankData() {}
 	public function addFormValue(GDT_Form $form, $value) {}
