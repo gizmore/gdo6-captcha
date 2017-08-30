@@ -6,6 +6,7 @@ $field instanceof GDT_Captcha;
   <label for="form[<?= $field->name; ?>]"><?= t('captcha'); ?></label>
   <?= $field->htmlIcon(); ?>
   <input
+   class="ib"
    autocomplete="off"
    type="text"
    pattern="[a-zA-Z]{5}"
@@ -13,7 +14,7 @@ $field instanceof GDT_Captcha;
    name="form[<?= $field->name; ?>]"
    value="<?= html($field->getVar()); ?>"/>
   <img
-   class="gdo-captcha-img"
+   class="ib gdo-captcha-img"
    src="<?= $field->hrefCaptcha(); ?>"
    onclick="this.src='<?= $field->hrefNewCaptcha(); ?>'+(new Date().getTime())" />
   <div class="gdo-form-error"><?= $field->error; ?></div>
