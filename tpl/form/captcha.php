@@ -1,7 +1,4 @@
-<?php
-use GDO\Captcha\GDT_Captcha;
-$field instanceof GDT_Captcha;
-?>
+<?php /** @var $field GDO\Captcha\GDT_Captcha **/ ?>
 <div class="gdo-container<?= $field->classError(); ?>">
   <label for="form[<?= $field->name; ?>]"><?= t('captcha'); ?></label>
   <?= $field->htmlIcon(); ?>
@@ -10,9 +7,10 @@ $field instanceof GDT_Captcha;
    autocomplete="off"
    type="text"
    pattern="[a-zA-Z]{5}"
+   size="5"
    required="required"
    name="form[<?= $field->name; ?>]"
-   value="<?= html($field->getVar()); ?>"/>
+   value="<?= $field->displayVar(); ?>" />
   <img
    class="ib gdo-captcha-img"
    src="<?= $field->hrefCaptcha(); ?>"
