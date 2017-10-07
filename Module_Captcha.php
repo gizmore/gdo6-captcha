@@ -2,7 +2,7 @@
 namespace GDO\Captcha;
 
 use GDO\Core\GDO_Module;
-use GDO\Type\GDT_Int;
+use GDO\DB\GDT_Int;
 use GDO\UI\GDT_Color;
 use GDO\UI\GDT_Font;
 

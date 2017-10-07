@@ -2,17 +2,16 @@
 namespace GDO\Captcha;
 
 use GDO\Form\GDT_Form;
-use GDO\Type\GDT_Base;
+use GDO\Core\GDT;
 use GDO\User\GDO_Session;
-use GDO\Template\GDT_Template;
-use GDO\Form\WithIcon;
+use GDO\Core\GDT_Template;
+use GDO\UI\WithIcon;
 
-class GDT_Captcha extends GDT_Base
+class GDT_Captcha extends GDT
 {
     use WithIcon;
     public $notNull = true;
     
-	public function blankData() {}
 	public function addFormValue(GDT_Form $form, $value) {}
 	
 	public function __construct()
