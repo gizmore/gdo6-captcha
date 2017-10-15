@@ -17,6 +17,7 @@ class GDT_Captcha extends GDT
 	public function __construct()
 	{
 		$this->name = 'captcha';
+		$this->icon('captcha');
 		$this->initial = GDO_Session::get('php_lock_captcha', '');
 	}
 	
