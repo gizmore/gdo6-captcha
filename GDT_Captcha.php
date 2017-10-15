@@ -50,6 +50,8 @@ class GDT_Captcha extends GDT
 	public function invalidate()
 	{
 		GDO_Session::remove('php_lock_captcha');
+		unset($_POST['form'][$this->name]);
+		unset($_REQUEST['form'][$this->name]);
 	}
 	
 	public function onValidated()
