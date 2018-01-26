@@ -6,8 +6,9 @@ use GDO\Core\GDT;
 use GDO\User\GDO_Session;
 use GDO\Core\GDT_Template;
 use GDO\UI\WithIcon;
+use GDO\DB\GDT_String;
 
-class GDT_Captcha extends GDT
+class GDT_Captcha extends GDT_String
 {
     use WithIcon;
     public $notNull = true;
@@ -38,7 +39,8 @@ class GDT_Captcha extends GDT
 	
 	public function validate($value)
 	{
-		if (strtoupper($value) === GDO_Session::get('php_captcha', null))
+		$stored = GDO_Session::get('php_captcha', null);
+		if (strtoupper($value) === $stored)
 		{
 			GDO_Session::set('php_lock_captcha', $value);
 			return true;
