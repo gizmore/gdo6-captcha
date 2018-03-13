@@ -19,6 +19,7 @@ class GDT_Captcha extends GDT_String
 	{
 		$this->name = 'captcha';
 		$this->icon('captcha');
+		$this->tooltip(t('tt_captcha'));
 		$this->initial = GDO_Session::get('php_lock_captcha', '');
 	}
 	
