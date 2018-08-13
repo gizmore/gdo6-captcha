@@ -262,7 +262,7 @@ use GDO\Util\Random;
          
          // loop through and generate the code letter by letter
          for ($i = 0; $i < $this->iNumChars; $i++) {
-            if (count($this->aCharSet) > 0) {
+            if ($this->aCharSet) {
                // select random character and add to code string
                
                $this->sCode .= $this->aCharSet[Random::arrayItem($this->aCharSet)];
