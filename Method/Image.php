@@ -17,8 +17,8 @@ use GDO\Net\HTTP;
  */
 class Image extends Method
 {
-    public function isAjax() { return true; }
-    
+	public function isAjax() { return true; }
+	
 	public function execute() 
 	{
 		# Load the Captcha class

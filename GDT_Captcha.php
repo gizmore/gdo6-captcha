@@ -10,9 +10,9 @@ use GDO\DB\GDT_String;
 
 class GDT_Captcha extends GDT_String
 {
-    use WithIcon;
-    public $notNull = true;
-    
+	use WithIcon;
+	public $notNull = true;
+	
 	public function addFormValue(GDT_Form $form, $value) {}
 	
 	public function __construct()
@@ -59,7 +59,7 @@ class GDT_Captcha extends GDT_String
 	
 	public function onValidated()
 	{
-	    $this->invalidate();
+		$this->invalidate();
 	}
 	
 }
