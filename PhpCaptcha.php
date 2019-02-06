@@ -285,7 +285,6 @@ use GDO\Util\Random;
 		 for ($i = 0; $i < strlen($this->sCode); $i++) {
 			// select random font
 			$sCurrentFont = $this->aFonts[array_rand($this->aFonts)];
-		   # $sCurrentFont = CLICKZ_SERVER_PATH.'/'.$sCurrentFont;
 			
 			// select random colour
 			if ($this->bUseColour) {

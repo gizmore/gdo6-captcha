@@ -29,6 +29,7 @@ class Image extends Method
 		
 		# Setup Font, Color, Size
 		$aFonts = $module->cfgCaptchaFonts();
+		foreach ($aFonts as $i => $font) { $aFonts[$i] = GWF_PATH . "/$font"; }
 		$rgbcolor = ltrim($module->cfgCaptchaBG(), '#');
 		$width = $module->cfgCaptchaWidth();
 		$height = $module->cfgCaptchaHeight();
@@ -38,6 +39,7 @@ class Image extends Method
 		{
 			GDO_Session::remove('php_lock_captcha');
 		}
+		
 		
 		$oVisualCaptcha->Create('', GDO_Session::get('php_lock_captcha', true));
 		die();
