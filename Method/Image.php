@@ -29,7 +29,7 @@ class Image extends Method
 		
 		# Setup Font, Color, Size
 		$aFonts = $module->cfgCaptchaFonts();
-		foreach ($aFonts as $i => $font) { $aFonts[$i] = GWF_PATH . "/$font"; }
+		foreach ($aFonts as $i => $font) { $aFonts[$i] = GDO_PATH . "/$font"; }
 		$rgbcolor = ltrim($module->cfgCaptchaBG(), '#');
 		$width = $module->cfgCaptchaWidth();
 		$height = $module->cfgCaptchaHeight();
