@@ -1,7 +1,7 @@
 <?php /** @var $field GDO\Captcha\GDT_Captcha **/ ?>
 <div class="gdo-container<?= $field->classError(); ?>">
-  <label for="form[<?= $field->name; ?>]"><?= t('captcha'); ?></label>
   <?= $field->htmlIcon(); ?>
+  <label for="form[<?= $field->name; ?>]"><?= t('captcha'); ?></label>
   <input
    class="ib"
    autocomplete="off"
