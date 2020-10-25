@@ -2,12 +2,18 @@
 namespace GDO\Captcha;
 
 use GDO\Form\GDT_Form;
-use GDO\Core\GDT;
 use GDO\User\GDO_Session;
 use GDO\Core\GDT_Template;
 use GDO\UI\WithIcon;
 use GDO\DB\GDT_String;
 
+/**
+ * Very basic captcha and easy to solve.
+ * 
+ * @author gizmore
+ * @version 6.10
+ * @since 3.04
+ */
 class GDT_Captcha extends GDT_String
 {
 	use WithIcon;
