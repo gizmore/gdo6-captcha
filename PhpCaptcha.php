@@ -48,7 +48,7 @@ namespace GDO\Captcha;
    
    // class defaults - change to effect globally
    
-use GDO\User\GDO_Session;
+use GDO\Session\GDO_Session;
 use GDO\Util\Random;
 
    define('CAPTCHA_SESSION_ID', 'php_captcha');

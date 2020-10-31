@@ -4,7 +4,7 @@ namespace GDO\Captcha\Method;
 use GDO\Captcha\Module_Captcha;
 use GDO\Captcha\PhpCaptcha;
 use GDO\Core\Method;
-use GDO\User\GDO_Session;
+use GDO\Session\GDO_Session;
 use GDO\Net\HTTP;
 /**
  * Create and display a captcha.

@@ -2,7 +2,7 @@
 namespace GDO\Captcha;
 
 use GDO\Form\GDT_Form;
-use GDO\User\GDO_Session;
+use GDO\Session\GDO_Session;
 use GDO\Core\GDT_Template;
 use GDO\UI\WithIcon;
 use GDO\DB\GDT_String;
