@@ -278,6 +278,8 @@ use GDO\Util\Random;
 		 } else {
 		 	GDO_Session::set(CAPTCHA_SESSION_ID, $this->sCode);
 		 }
+		 
+		 GDO_Session::commit();
 	  }
 	  
 	  function DrawCharacters() {
