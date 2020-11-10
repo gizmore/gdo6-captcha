@@ -17,6 +17,7 @@ use GDO\DB\GDT_String;
 class GDT_Captcha extends GDT_String
 {
 	use WithIcon;
+	
 	public $notNull = true;
 	
 	public function addFormValue(GDT_Form $form, $value) {}
@@ -26,12 +27,17 @@ class GDT_Captcha extends GDT_String
 		$this->name = 'captcha';
 		$this->icon('captcha');
 		$this->tooltip(t('tt_captcha'));
-		$this->initial = GDO_Session::get('php_lock_captcha', '');
+		$this->initial = GDO_Session::get('php_captcha_lock');
 	}
 	
 	public function hrefCaptcha()
 	{
-		return "index.php?mo=Captcha&me=Image&ajax=1";
+	    $href = "index.php?mo=Captcha&me=Image&ajax=1";
+	    if ($code = GDO_Session::get('php_captcha_lock'))
+	    {
+	        $href .= "&old={$code}";
+	    }
+	    return $href;
 	}
 	
 	public function hrefNewCaptcha()
@@ -46,26 +52,23 @@ class GDT_Captcha extends GDT_String
 	
 	public function validate($value)
 	{
-		$stored = GDO_Session::get('php_captcha', null);
-		if (strtoupper($value) === $stored)
+		$stored = GDO_Session::get('php_captcha');
+		if (strtoupper($value) === strtoupper($stored))
 		{
-			GDO_Session::set('php_lock_captcha', $value);
+		    GDO_Session::set('php_captcha_lock', strtoupper($value));
 			return true;
 		}
-		$this->invalidate();
-		return $this->error('err_captcha');
+		return $this->invalidate();
 	}
 	
 	public function invalidate()
 	{
-		GDO_Session::remove('php_lock_captcha');
-		unset($_POST[$this->formVariable()][$this->name]);
+	    GDO_Session::remove('php_captcha');
+	    GDO_Session::remove('php_captcha_lock');
+	    unset($_POST[$this->formVariable()][$this->name]);
 		unset($_REQUEST[$this->formVariable()][$this->name]);
-	}
-	
-	public function onValidated()
-	{
-		$this->invalidate();
+		$this->initial = null;
+		return $this->error('err_captcha');
 	}
 	
 }

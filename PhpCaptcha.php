@@ -253,7 +253,7 @@ use GDO\Util\Random;
 	  
 	  function GenerateCode($challenge=true) {
 	  	
-	  	if ($challenge !== true) {
+	    if (strlen($challenge) === CAPTCHA_NUM_CHARS) {
 	  		$this->sCode = $challenge;
 	  		return;
 	  	}

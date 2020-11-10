@@ -6,6 +6,13 @@ use GDO\DB\GDT_Int;
 use GDO\UI\GDT_Color;
 use GDO\UI\GDT_Font;
 
+/**
+ * Captcha implementation via PhpCaptcha.php
+ * 
+ * @author gizmore
+ * @version 6.10
+ * @since 3.02
+ */
 final class Module_Captcha extends GDO_Module
 {
 	public function onLoadLanguage() { return $this->loadLanguage('lang/captcha'); }
@@ -22,4 +29,10 @@ final class Module_Captcha extends GDO_Module
 	public function cfgCaptchaBG() { return $this->getConfigValue('captcha_bg'); }
 	public function cfgCaptchaWidth() { return $this->getConfigValue('captcha_width'); }
 	public function cfgCaptchaHeight() { return $this->getConfigValue('captcha_height'); }
+	
+	public function onIncludeScripts()
+	{
+	    $this->addCss('css/captcha.css');
+	}
+
 }

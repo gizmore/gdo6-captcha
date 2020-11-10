@@ -6,6 +6,7 @@ use GDO\Captcha\PhpCaptcha;
 use GDO\Core\Method;
 use GDO\Session\GDO_Session;
 use GDO\Net\HTTP;
+
 /**
  * Create and display a captcha.
  * 
@@ -37,11 +38,14 @@ class Image extends Method
 		
 		if (isset($_REQUEST['new']))
 		{
-			GDO_Session::remove('php_lock_captcha');
+		    GDO_Session::remove('php_captcha');
+		    GDO_Session::remove('php_captcha_lock');
+// 		    GDO_Session::commit();
 		}
 		
-		
-		$oVisualCaptcha->Create('', GDO_Session::get('php_lock_captcha', true));
+		$challenge = GDO_Session::get('php_captcha_lock', @$_REQUEST['old']);
+		$oVisualCaptcha->Create('', $challenge);
 		die();
 	}
+	
 }

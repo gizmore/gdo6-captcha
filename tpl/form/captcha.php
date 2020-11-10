@@ -1,4 +1,6 @@
-<?php /** @var $field GDO\Captcha\GDT_Captcha **/ ?>
+<?php
+/** @var $field \GDO\Captcha\GDT_Captcha **/
+?>
 <div class="gdo-container<?= $field->classError(); ?>">
   <?= $field->htmlIcon(); ?>
   <label <?=$field->htmlForID()?>><?= t('captcha'); ?></label>
