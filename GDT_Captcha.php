@@ -70,5 +70,16 @@ class GDT_Captcha extends GDT_String
 		$this->initial = null;
 		return $this->error('err_captcha');
 	}
+
+	public function onValidated()
+	{
+	    GDO_Session::remove('php_captcha');
+	    GDO_Session::remove('php_captcha_lock');
+	    $this->var = null;
+	    $this->initial = null;
+	    unset($_POST[$this->formVariable()][$this->name]);
+	    unset($_REQUEST[$this->formVariable()][$this->name]);
+	}
 	
+
 }
