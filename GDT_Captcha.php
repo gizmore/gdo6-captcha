@@ -50,12 +50,16 @@ class GDT_Captcha extends GDT_String
 		return GDT_Template::php('Captcha', 'form/captcha.php', ['field' => $this]);
 	}
 	
+	################
+	### Validate ###
+	################
 	public function validate($value)
 	{
 		$stored = GDO_Session::get('php_captcha');
 		if (strtoupper($value) === strtoupper($stored))
 		{
 		    GDO_Session::set('php_captcha_lock', strtoupper($value));
+		    $this->unsetRequest();
 			return true;
 		}
 		return $this->invalidate();
@@ -65,9 +69,7 @@ class GDT_Captcha extends GDT_String
 	{
 	    GDO_Session::remove('php_captcha');
 	    GDO_Session::remove('php_captcha_lock');
-	    unset($_POST[$this->formVariable()][$this->name]);
-		unset($_REQUEST[$this->formVariable()][$this->name]);
-		$this->initial = null;
+	    $this->unsetRequest();
 		return $this->error('err_captcha');
 	}
 
@@ -75,11 +77,14 @@ class GDT_Captcha extends GDT_String
 	{
 	    GDO_Session::remove('php_captcha');
 	    GDO_Session::remove('php_captcha_lock');
-	    $this->var = null;
-	    $this->initial = null;
+	    $this->unsetRequest();
+	}
+	
+	private function unsetRequest()
+	{
+	    $this->var = $this->initial = null;
 	    unset($_POST[$this->formVariable()][$this->name]);
 	    unset($_REQUEST[$this->formVariable()][$this->name]);
 	}
 	
-
 }
