@@ -65,9 +65,10 @@ class GDT_Captcha extends GDT_String
 		$stored = GDO_Session::get('php_captcha');
 		if (strtoupper($value) === strtoupper($stored))
 		{
-		    GDO_Session::set('php_captcha_lock', strtoupper($value));
 		    $this->unsetRequest();
-			return true;
+// 		    GDO_Session::set('php_captcha_lock', strtoupper($value));
+		    $this->initial($value);
+		    return true;
 		}
 		return $this->invalidate();
 	}
