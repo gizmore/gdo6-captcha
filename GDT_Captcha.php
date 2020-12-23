@@ -3,6 +3,7 @@ namespace GDO\Captcha;
 
 use GDO\Form\GDT_Form;
 use GDO\Session\GDO_Session;
+use GDO\Core\Application;
 use GDO\Core\GDT_Template;
 use GDO\UI\WithIcon;
 use GDO\DB\GDT_String;
@@ -22,7 +23,7 @@ class GDT_Captcha extends GDT_String
 	
 	public function addFormValue(GDT_Form $form, $value) {}
 	
-	public function __construct()
+	protected function __construct()
 	{
 		$this->name = 'captcha';
 		$this->icon('captcha');
@@ -55,6 +56,12 @@ class GDT_Captcha extends GDT_String
 	################
 	public function validate($value)
 	{
+	    $app = Application::instance();
+	    if ($app->isCLI() || $app->isUnitTests())
+	    {
+	        return true;
+	    }
+	    
 		$stored = GDO_Session::get('php_captcha');
 		if (strtoupper($value) === strtoupper($stored))
 		{
