@@ -1,5 +1,7 @@
 <?php
 /** @var $field \GDO\Captcha\GDT_Captcha **/
+use GDO\Core\GDT_Template;
+
 ?>
 <div class="gdo-container<?= $field->classError(); ?>">
   <?= $field->htmlIcon(); ?>
@@ -14,9 +16,6 @@
    required="required"
    <?=$field->htmlFormName()?>
    value="<?= $field->displayVar(); ?>" />
-  <img
-   class="ib gdo-captcha-img"
-   src="<?= $field->hrefCaptcha(); ?>"
-   onclick="this.src='<?= $field->hrefNewCaptcha(); ?>'+(new Date().getTime())" />
+  <?= GDT_Template::php('Captcha', 'form/captcha_inner.php', ['field' => $field])?>
   <?= $field->htmlError(); ?>
 </div>
