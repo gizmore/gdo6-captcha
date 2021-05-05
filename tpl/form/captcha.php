@@ -3,7 +3,7 @@
 use GDO\Core\GDT_Template;
 
 ?>
-<div class="gdo-container<?= $field->classError(); ?>">
+<div class="gdt-container<?= $field->classError(); ?>">
   <?= $field->htmlIcon(); ?>
   <label <?=$field->htmlForID()?>><?= t('captcha'); ?></label>
   <input
