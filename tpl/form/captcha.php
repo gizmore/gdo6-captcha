@@ -1,11 +1,11 @@
 <?php
 /** @var $field \GDO\Captcha\GDT_Captcha **/
 use GDO\Core\GDT_Template;
-
 ?>
 <div class="gdt-container<?= $field->classError(); ?>">
   <?= $field->htmlIcon(); ?>
   <label <?=$field->htmlForID()?>><?= t('captcha'); ?></label>
+  <span>
   <input
    <?=$field->htmlID()?>
    class="ib"
@@ -17,5 +17,6 @@ use GDO\Core\GDT_Template;
    <?=$field->htmlFormName()?>
    value="<?= $field->displayVar(); ?>" />
   <?= GDT_Template::php('Captcha', 'form/captcha_inner.php', ['field' => $field])?>
+  </span>
   <?= $field->htmlError(); ?>
 </div>
