@@ -11,11 +11,13 @@ use GDO\UI\GDT_Font;
  * @todo Add a hidden field captcha_title/ctitle that may not be filled out.
  * 
  * @author gizmore
- * @version 6.11
- * @since 3.02
+ * @version 6.10.3
+ * @since 3.2.0
  */
 final class Module_Captcha extends GDO_Module
 {
+    public $module_license = 'BSD';
+    
 	public function onLoadLanguage() { return $this->loadLanguage('lang/captcha'); }
 	public function getConfig()
 	{

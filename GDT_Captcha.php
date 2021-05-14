@@ -12,8 +12,8 @@ use GDO\DB\GDT_String;
  * Very basic captcha and easy to solve.
  * 
  * @author gizmore
- * @version 6.10
- * @since 3.04
+ * @version 6.10.3
+ * @since 3.4.0
  */
 class GDT_Captcha extends GDT_String
 {
@@ -27,6 +27,7 @@ class GDT_Captcha extends GDT_String
 	
 	protected function __construct()
 	{
+	    parent::__construct();
 		$this->icon('captcha');
 		$this->tooltip(t('tt_captcha'));
 		$this->initial = GDO_Session::get('php_captcha_lock');
@@ -34,11 +35,11 @@ class GDT_Captcha extends GDT_String
 	
 	public function hrefCaptcha()
 	{
-	    $href = "index.php?mo=Captcha&me=Image&ajax=1";
-	    if ($code = GDO_Session::get('php_captcha_lock'))
-	    {
-	        $href .= "&old={$code}";
-	    }
+	    $href = "index.php?mo=Captcha&me=Image";
+// 	    if ($code = GDO_Session::get('php_captcha_lock'))
+// 	    {
+// 	        $href .= "&old={$code}";
+// 	    }
 	    return $href;
 	}
 	
@@ -67,7 +68,7 @@ class GDT_Captcha extends GDT_String
 		if (strtoupper($value) === strtoupper($stored))
 		{
 		    $this->unsetRequest();
-// 		    GDO_Session::set('php_captcha_lock', strtoupper($value));
+		    GDO_Session::set('php_captcha_lock', strtoupper($value));
 		    $this->initial($value);
 		    return true;
 		}

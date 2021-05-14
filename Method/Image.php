@@ -3,9 +3,9 @@ namespace GDO\Captcha\Method;
 
 use GDO\Captcha\Module_Captcha;
 use GDO\Captcha\PhpCaptcha;
-use GDO\Core\Method;
 use GDO\Session\GDO_Session;
 use GDO\Net\HTTP;
+use GDO\Core\MethodAjax;
 
 /**
  * Create and display a captcha.
@@ -16,10 +16,8 @@ use GDO\Net\HTTP;
  * @since 2.0
  * @version 5.0
  */
-class Image extends Method
+class Image extends MethodAjax
 {
-	public function isAjax() { return true; }
-	
 	public function execute() 
 	{
 		# Load the Captcha class
@@ -40,10 +38,10 @@ class Image extends Method
 		{
 		    GDO_Session::remove('php_captcha');
 		    GDO_Session::remove('php_captcha_lock');
-// 		    GDO_Session::commit();
+		    GDO_Session::commit();
 		}
 		
-		$challenge = GDO_Session::get('php_captcha_lock', @$_REQUEST['old']);
+		$challenge = GDO_Session::get('php_captcha_lock', true);
 		$oVisualCaptcha->Create('', $challenge);
 		die();
 	}
