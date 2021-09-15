@@ -8,7 +8,7 @@ use GDO\UI\GDT_Font;
 
 /**
  * Captcha implementation via PhpCaptcha.php
- * @todo Add a hidden field captcha_title/ctitle that may not be filled out.
+ * @TODO Add a hidden field captcha_title/ctitle that may not be filled out.
  * 
  * @author gizmore
  * @version 6.10.3
