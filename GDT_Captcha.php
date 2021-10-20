@@ -37,17 +37,12 @@ class GDT_Captcha extends GDT_String
 	
 	public function hrefCaptcha()
 	{
-	    $href = "index.php?mo=Captcha&me=Image";
-// 	    if ($code = GDO_Session::get('php_captcha_lock'))
-// 	    {
-// 	        $href .= "&old={$code}";
-// 	    }
-	    return $href;
+	    return href('Captcha', 'image');
 	}
 	
 	public function hrefNewCaptcha()
 	{
-		return "index.php?mo=Captcha&me=Image&ajax=1&new=1";
+	    return href('Captcha', 'image', '&new=1&ajax=1');
 	}
 
 	public function renderForm()
