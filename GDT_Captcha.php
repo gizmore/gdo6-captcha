@@ -42,7 +42,7 @@ class GDT_Captcha extends GDT_String
 	
 	public function hrefNewCaptcha()
 	{
-	    return href('Captcha', 'image', '&new=1&ajax=1');
+	    return href('Captcha', 'image', '&new=1&_ajax=1');
 	}
 
 	public function renderForm()
