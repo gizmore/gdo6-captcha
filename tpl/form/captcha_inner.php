@@ -12,7 +12,7 @@ use GDO\Captcha\GDT_Captcha;
    size="5"
    required="required"
    <?=$field->htmlFormName()?>
-   value="<?= $field->displayVar(); ?>" />
+   value="<?= $field->display(); ?>" />
   <img class="ib gdo-captcha-img" src="<?= $field->hrefCaptcha(); ?>"
    alt="Captcha" onclick="this.src='<?= $field->hrefNewCaptcha(); ?>'+(new Date().getTime())" />
 </span>
